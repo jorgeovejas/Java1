@@ -1,0 +1,106 @@
+import javax.swing.*;
+import java.awt.*;
+
+public class ChuletaJPanel {
+    public static void main(String[] args) {
+        // Crear el marco principal (JFrame)
+        JFrame frame = new JFrame("Ejemplo de JPanel");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 300);
+        
+        // Crear un JPanel
+        JPanel panel = new JPanel();
+        
+        // Establecer un layout (por defecto es FlowLayout)
+        panel.setLayout(new FlowLayout());
+
+        // Añadir componentes al JPanel
+        JLabel label = new JLabel("Etiqueta");
+        JButton button = new JButton("Botón");
+        JTextField textField = new JTextField(10); // 10 columnas de ancho
+
+        panel.add(label);
+        panel.add(textField);
+        panel.add(button);
+
+        // Añadir el JPanel al JFrame
+        frame.add(panel);
+
+        // Mostrar el JFrame
+        frame.setVisible(true);
+    }
+}
+
+// Ejemplo de BorderLayout
+class BorderLayoutExample extends JFrame {
+    public BorderLayoutExample() {
+        setTitle("Ejemplo de BorderLayout");
+        setSize(400, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        JPanel panel = new JPanel(new BorderLayout());
+
+        panel.add(new JButton("Norte"), BorderLayout.NORTH);
+        panel.add(new JButton("Sur"), BorderLayout.SOUTH);
+        panel.add(new JButton("Este"), BorderLayout.EAST);
+        panel.add(new JButton("Oeste"), BorderLayout.WEST);
+        panel.add(new JButton("Centro"), BorderLayout.CENTER);
+
+        add(panel);
+        setVisible(true);
+    }
+}
+
+// Ejemplo de GridLayout
+class GridLayoutExample extends JFrame {
+    public GridLayoutExample() {
+        setTitle("Ejemplo de GridLayout");
+        setSize(400, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JPanel panel = new JPanel(new GridLayout(3, 2)); // 3 filas, 2 columnas
+
+        for (int i = 1; i <= 6; i++) {
+            panel.add(new JButton("Botón " + i));
+        }
+
+        add(panel);
+        setVisible(true);
+    }
+}
+
+// Ejemplo de anidar JPanel
+class NestedPanelExample extends JFrame {
+    public NestedPanelExample() {
+        setTitle("Ejemplo de JPanel Anidados");
+        setSize(400, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JPanel mainPanel = new JPanel(new BorderLayout());
+
+        JPanel topPanel = new JPanel(new FlowLayout());
+        topPanel.add(new JLabel("Etiqueta en el panel superior"));
+        mainPanel.add(topPanel, BorderLayout.NORTH);
+
+        JPanel centerPanel = new JPanel(new GridLayout(2, 2));
+        centerPanel.add(new JButton("Botón 1"));
+        centerPanel.add(new JButton("Botón 2"));
+        centerPanel.add(new JButton("Botón 3"));
+        centerPanel.add(new JButton("Botón 4"));
+        mainPanel.add(centerPanel, BorderLayout.CENTER);
+
+        add(mainPanel);
+        setVisible(true);
+    }
+}
+
+// Ejecutar los ejemplos
+public class EjecutarEjemplos {
+    public static void main(String[] args) {
+        // Comentar/descomentar las líneas para ver los diferentes ejemplos
+        //new ChuletaJPanel();
+        //new BorderLayoutExample();
+        //new GridLayoutExample();
+        //new NestedPanelExample();
+    }
+}
