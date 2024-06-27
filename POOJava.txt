@@ -1,0 +1,152 @@
+// Clase Básica
+public class Persona {
+    // Atributos (Encapsulamiento: atributos privados)
+    private String nombre;
+    private int edad;
+
+    // Constructor
+    public Persona(String nombre, int edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+
+    // Métodos Getter y Setter (Encapsulamiento)
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    // Método
+    public void mostrarInfo() {
+        System.out.println("Nombre: " + nombre + ", Edad: " + edad);
+    }
+}
+
+// Herencia: Clase Estudiante hereda de Persona
+public class Estudiante extends Persona {
+    private String carrera;
+
+    public Estudiante(String nombre, int edad, String carrera) {
+        super(nombre, edad); // Llamada al constructor de la clase base
+        this.carrera = carrera;
+    }
+
+    public String getCarrera() {
+        return carrera;
+    }
+
+    public void setCarrera(String carrera) {
+        this.carrera = carrera;
+    }
+
+    // Sobrescritura de método (Polimorfismo)
+    @Override
+    public void mostrarInfo() {
+        super.mostrarInfo(); // Llamada al método de la clase base
+        System.out.println("Carrera: " + carrera);
+    }
+}
+
+// Clases Abstractas
+abstract class Animal {
+    // Método abstracto (debe ser implementado por las subclases)
+    public abstract void hacerSonido();
+
+    // Método concreto
+    public void dormir() {
+        System.out.println("El animal está durmiendo.");
+    }
+}
+
+class Perro extends Animal {
+    @Override
+    public void hacerSonido() {
+        System.out.println("El perro ladra.");
+    }
+}
+
+// Interfaces
+interface Vehiculo {
+    void arrancar();
+    void detener();
+}
+
+class Coche implements Vehiculo {
+    @Override
+    public void arrancar() {
+        System.out.println("El coche ha arrancado.");
+    }
+
+    @Override
+    public void detener() {
+        System.out.println("El coche se ha detenido.");
+    }
+}
+
+// Polimorfismo con Interfaces
+public class Main {
+    public static void main(String[] args) {
+        // Encapsulamiento y uso de métodos
+        Persona persona = new Persona("Juan", 30);
+        persona.mostrarInfo();
+
+        // Herencia y sobrescritura de métodos
+        Estudiante estudiante = new Estudiante("Ana", 22, "Informática");
+        estudiante.mostrarInfo();
+
+        // Abstracción y uso de clases abstractas
+        Animal perro = new Perro();
+        perro.hacerSonido();
+        perro.dormir();
+
+        // Uso de interfaces
+        Vehiculo miCoche = new Coche();
+        miCoche.arrancar();
+        miCoche.detener();
+    }
+}
+
+/*
+Conceptos Clave:
+Clase: Define una plantilla para objetos, con atributos y métodos.
+Objeto: Instancia de una clase.
+Encapsulamiento: Agrupar datos (atributos) y métodos que operan sobre ellos en una sola unidad (clase). Utiliza modificadores de acceso como private, protected y public.
+Herencia: Permite que una clase adquiera los atributos y métodos de otra clase. Usa la palabra clave extends.
+Polimorfismo: Capacidad de un objeto para tomar múltiples formas. Utiliza la sobrescritura de métodos y las interfaces.
+Abstracción: Proceso de ocultar los detalles complejos de una implementación y mostrar solo la funcionalidad esencial. Utiliza clases abstractas y métodos abstractos.
+Interfaz: Define un contrato que otras clases pueden implementar. Usa la palabra clave interface.
+
+Con override hilamos lo siguiente en POO:
+class Animal {
+    public void hacerSonido() {
+        System.out.println("El animal hace un sonido.");
+    }
+}
+
+class Perro extends Animal {
+    @Override
+    public void hacerSonido() {
+        System.out.println("El perro ladra.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal miPerro = new Perro();
+        miPerro.hacerSonido();  // Imprimirá: "El perro ladra."
+    }
+}
+
+*/
+
