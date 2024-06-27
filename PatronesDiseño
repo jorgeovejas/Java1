@@ -1,0 +1,179 @@
+//Singleton
+
+public class Singleton {
+    private static Singleton instance;
+
+    private Singleton() {}
+
+    public static Singleton getInstance() {
+        if (instance == null) {
+            instance = new Singleton();
+        }
+        return instance;
+    }
+}
+
+
+//Factory method
+
+public abstract class Creator {
+    public abstract Product factoryMethod();
+
+    public void operation() {
+        Product product = factoryMethod();
+        // Operaciones con el producto
+    }
+}
+
+public class ConcreteCreator extends Creator {
+    @Override
+    public Product factoryMethod() {
+        return new ConcreteProduct();
+    }
+}
+
+public interface Product {
+    void operation();
+}
+
+public class ConcreteProduct implements Product {
+    @Override
+    public void operation() {
+        // Implementación de la operación
+    }
+}
+
+
+//Decorator
+
+public interface Component {
+    void operation();
+}
+
+public class ConcreteComponent implements Component {
+    @Override
+    public void operation() {
+        // Implementación de la operación
+    }
+}
+
+public abstract class Decorator implements Component {
+    protected Component component;
+
+    public Decorator(Component component) {
+        this.component = component;
+    }
+
+    @Override
+    public void operation() {
+        component.operation();
+    }
+}
+
+public class ConcreteDecorator extends Decorator {
+    public ConcreteDecorator(Component component) {
+        super(component);
+    }
+
+    @Override
+    public void operation() {
+        super.operation();
+        // Lógica adicional
+    }
+}
+
+
+//Observer
+
+import java.util.ArrayList;
+import java.util.List;
+
+public interface Observer {
+    void update();
+}
+
+public interface Subject {
+    void attach(Observer observer);
+    void detach(Observer observer);
+    void notifyObservers();
+}
+
+public class ConcreteSubject implements Subject {
+    private List<Observer> observers = new ArrayList<>();
+
+    @Override
+    public void attach(Observer observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void detach(Observer observer) {
+        observers.remove(observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (Observer observer : observers) {
+            observer.update();
+        }
+    }
+}
+
+public class ConcreteObserver implements Observer {
+    @Override
+    public void update() {
+        // Lógica de actualización
+    }
+}
+
+
+//Template Method
+
+public abstract class AbstractClass {
+    public final void templateMethod() {
+        // Operaciones comunes
+
+        primitiveOperation();
+
+        // Operaciones comunes
+    }
+
+    protected abstract void primitiveOperation();
+}
+
+public class ConcreteClass extends AbstractClass {
+    @Override
+    protected void primitiveOperation() {
+        // Implementación específica
+    }
+}
+
+
+//Iterator
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class Aggregate {
+    private List<Object> items = new ArrayList<>();
+
+    public Iterator<Object> createIterator() {
+        return new ConcreteIterator();
+    }
+
+    private class ConcreteIterator implements Iterator<Object> {
+        private int index = 0;
+
+        @Override
+        public boolean hasNext() {
+            return index < items.size();
+        }
+
+        @Override
+        public Object next() {
+            return items.get(index++);
+        }
+    }
+}
+
