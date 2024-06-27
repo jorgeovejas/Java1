@@ -1,0 +1,74 @@
+//Clase Actor
+public class Actor {
+    private String name;
+    private String race;
+    private String role;
+
+    public Actor(String name, String race, String role) {
+        this.name = name;
+        this.race = race;
+        this.role = role;
+    }
+
+    public void talk() {
+        System.out.println(name + " the " + race + " says: Hello, I am a " + role + ".");
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getRace() {
+        return race;
+    }
+
+    public String getRole() {
+        return role;
+    }
+}
+//Clase Elf
+public class Elf extends Actor {
+    public Elf(String name, String race, String role) {
+        super(name, race, role);
+    }
+
+    @Override
+    public void talk() {
+        System.out.println(getName() + " the " + getRace() + " whispers: Greetings, I am a " + getRole() + ".");
+    }
+}
+
+//Clase Dwarf
+
+public class Dwarf extends Actor {
+    public Dwarf(String name, String race, String role) {
+        super(name, race, role);
+    }
+
+    @Override
+    public void talk() {
+        System.out.println(getName() + " the " + getRace() + " grunts: Hey, I am a " + getRole() + ".");
+    }
+}
+
+
+//Clase main
+
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<Actor> entities = new ArrayList<>();
+
+        entities.add(new Elf("Feanor", "Elf", "Explorer"));
+        entities.add(new Dwarf("Durin", "Dwarf", "Warrior"));
+
+        for (Actor item : entities) {
+            item.talk();
+        }
+    }
+}
+
+
+//Todas separadas en clases dentro del mismo programa
+
