@@ -1,0 +1,87 @@
+//for y como referencias a una variable en un println
+
+public class Main {
+    public static void main(String[] args) {
+
+float decimal = 4.62f //la f del final se pone para que el programa reconozca que eso es un float
+        System.out.printf("Hello and welcome!");
+
+        for (int i = 1; i <= 5; i++) {
+
+          
+            System.out.println("i = " + i);
+        }
+    }
+}
+
+---------------------------------------------------
+
+//cadena de caracters
+
+public class Main {
+    public static void main(String[] args) {
+
+        String frase = "hola buenas tardes";
+
+            System.out.println(frase);
+        
+    }
+}
+
+----------------------------------------------------
+//Guardar enteros
+
+public class Main {
+    public static void main(String[] args) {
+
+        scanner entrada= new scanner(system.in);
+	int numero;
+	System.out.println("Digite un numero: ");
+	numero = entrada.nextint() //si fuera un float seria nextfloat() etc
+	System.out.println(+numero);
+
+        
+    }
+}
+
+--------------------------------------------------
+
+//guardar cadena
+
+public class Main {
+    public static void main(String[] args) {
+
+        scanner entrada= new scanner(system.in);
+	string texto;
+	System.out.println("escribe una frase: ");
+	texto = entrada.nextline() //si ponemos .nextline se imprime toda la linea y si es .next solo se imprime la primera palabra.
+	System.out.println(+texto);
+
+        
+    }
+}
+
+--------------------------------------------------
+//Usar Java Panels
+
+import javax.swing.*;
+
+public class Main {
+    public static void main(String[] args) {
+
+        String frase;
+        int numero;
+        char letra;
+        double decimal;
+
+        frase = JOptionPane.showInputDialog("Introduce una frase: ");
+        numero = Integer.parseInt(JOptionPane.showInputDialog("Introduce un numero: "));
+        letra = JOptionPane.showInputDialog("Introduce una letra: ").charAt(0);
+        decimal = Double.parseDouble(JOptionPane.showInputDialog("Introduce un numero decimal: "));
+
+        JOptionPane.showMessageDialog(null, "frase es: "+frase);
+        JOptionPane.showMessageDialog(null, "numero es: "+numero);
+        JOptionPane.showMessageDialog(null, "letra es: "+letra);
+        JOptionPane.showMessageDialog(null, "decimal es: "+decimal);
+    }
+}

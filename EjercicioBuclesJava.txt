@@ -1,0 +1,17 @@
+import javax.swing.*;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner entrada = new Scanner(System.in);
+        int n1;
+        System.out.println("Digita un numero para su cuadrado, si quieres terminar escribe un numero negativo");
+        n1= entrada.nextInt();
+        while(n1>=0){
+            System.out.println(n1*n1);
+            System.out.println("Introduce otro");
+            n1= entrada.nextInt();
+        }
+    }
+}

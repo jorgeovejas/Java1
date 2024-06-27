@@ -1,0 +1,81 @@
+//Operaciones
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+float numero1, numero2, resta, div;
+Scanner entrada = new Scanner(System.in);
+numero1 = entrada.nextFloat();
+numero2 = entrada.nextFloat();
+div = numero1/numero2;
+System.out.println("division es: "+div);
+
+//Resto es % y el resto de operaciones
+    }
+}
+
+---------------------------------
+
+//Ejercicio calcular salario semanal de una persona
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+float horas, salario, resultado;
+Scanner entrada= new Scanner(System.in);
+horas = entrada.nextFloat();
+salario = entrada.nextFloat();
+resultado = horas*salario;
+
+System.out.println("el salario es: " +resultado);
+
+    }
+}
+
+-------------------------------------
+//Ejercicio calcular total de dólares teniendo solo dólares de una persona
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+float guillermo, luis, juan, total;
+Scanner entrada= new Scanner(System.in);
+guillermo = entrada.nextFloat();
+luis = guillermo/2;
+juan = (luis+guillermo)/2;
+total = guillermo+luis+juan;
+System.out.println("el total es: " +total);
+
+    }
+}
+
+--------------------------------------------------
+//Ejercicio de calcular semanas días y horas mediante horas del usuario
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+float dias=0, horas, semanas=0,total ;
+Scanner entrada= new Scanner(System.in);
+horas = entrada.nextFloat();
+do {
+    if (horas >= 24) {
+        dias++;
+        horas-=24;
+    }
+    if(dias>=7){
+        semanas++;
+        dias-=7;
+    }
+}while(horas>24);
+
+
+System.out.println("semanas: " + semanas + ", dias: " + dias + ", horas: " + horas);
+
+
+    }
+}
+

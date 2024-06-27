@@ -1,0 +1,163 @@
+import javax.swing.*;
+
+public class Main {
+    public static void main(String[] args) {
+
+        int numero;
+
+        numero = Integer.parseInt(JOptionPane.showInputDialog(null, "introduce un numero que sea multiplo de 10"));
+        if (numero%10==0){
+            JOptionPane.showMessageDialog(null, "El número " + numero + " es múltiplo de 10");
+        }else{
+            JOptionPane.showMessageDialog(null, "El número " + numero + " no es múltiplo de 10");
+        }
+    }
+}
+
+-----------------------------------------------------------
+
+import javax.swing.*;
+
+public class Main {
+    public static void main(String[] args) {
+
+        int n1, n2, n3;
+
+        JOptionPane.showMessageDialog(null, "introduce numeros a ordenar ");
+        n1 = Integer.parseInt(JOptionPane.showInputDialog(null, "numero 1"));
+        n2 = Integer.parseInt(JOptionPane.showInputDialog(null, "numero 2"));
+        n3 = Integer.parseInt(JOptionPane.showInputDialog(null, "numero 3"));
+
+       if ((n1>n2) & (n2>n3)){
+           JOptionPane.showMessageDialog(null, "el orden es: "+n1+" " +n2+" "+n3);
+       }else if((n2>n1) & (n1>n3)){
+           JOptionPane.showMessageDialog(null, "el orden es: "+n2+" " +n1+" "+n3);
+       }else if((n3>n2) & (n2>n1)){
+           JOptionPane.showMessageDialog(null, "el orden es: "+n3+" " +n2+" "+n1);
+       }else if((n3>n1) & (n1>n2)){
+           JOptionPane.showMessageDialog(null, "el orden es: "+n3+" " +n1+" "+n2);
+       }else if((n2>n3) & (n3>n1)){
+           JOptionPane.showMessageDialog(null, "el orden es: "+n2+" " +n3+" "+n1);
+       }else if((n1>n3) & (n3>n2)){
+           JOptionPane.showMessageDialog(null, "el orden es: "+n1+" " +n3+" "+n2);
+       }
+    }
+}
+-----------------------------------------------------------------------------
+import javax.swing.*;
+
+public class Main {
+    public static void main(String[] args) {
+
+        int n1;
+
+
+        n1 = Integer.parseInt(JOptionPane.showInputDialog(null, "numero: "));
+
+
+       if ((n1>0)&(n1<10)){
+           JOptionPane.showMessageDialog(null, "numero de cifras es 1");
+       }else if ((n1>=10)&(n1<100)){
+            JOptionPane.showMessageDialog(null, "numero de cifras es 2");
+        }else if ((n1>=100)&(n1<1000)){
+           JOptionPane.showMessageDialog(null, "numero de cifras es 3");
+       }else if ((n1>=1000)&(n1<10000)){
+           JOptionPane.showMessageDialog(null, "numero de cifras es 4");
+       }else if ((n1>=10000)&(n1<100000)){
+           JOptionPane.showMessageDialog(null, "numero de cifras es 5");
+       }else{
+           JOptionPane.showMessageDialog(null, "has introducido un numero invalido");
+       }
+    }
+}
+---------------------------------------------------------------------------------
+import javax.swing.*;
+
+public class Main {
+    public static void main(String[] args) {
+
+        int dia,mes,año;
+
+
+        dia = Integer.parseInt(JOptionPane.showInputDialog(null, "introduce un dia: "));
+        mes = Integer.parseInt(JOptionPane.showInputDialog(null, "introduce un mes: "));
+        año = Integer.parseInt(JOptionPane.showInputDialog(null, "introduce un dia: "));
+
+       if ((dia>=1)&(dia<=30)&(mes>=1)&(mes<=12)&(año>=0)&(año<=2024)){
+           JOptionPane.showMessageDialog(null, "la fecha es correcta");
+       }else{
+           JOptionPane.showMessageDialog(null, "la fecha es incorrecta");
+       }
+    }
+}
+--------------------------------------------------------------------------------
+//Calculadora
+import javax.swing.*;
+
+public class Main {
+    public static void main(String[] args) {
+
+        int n1, n2;
+        float suma, resta, mult, div;
+        char operacion;
+
+        n1 = Integer.parseInt(JOptionPane.showInputDialog(null, "introduce numero 1: "));
+        n2= Integer.parseInt(JOptionPane.showInputDialog("digita numero 2: "));
+        operacion = JOptionPane.showInputDialog("digita caracter").charAt(0);
+       switch (operacion){
+           case 'M':
+           case 'm': mult= n1*n2;
+               JOptionPane.showMessageDialog(null, "la multiplicacion es: "+mult);
+            break;
+           case 'D':
+           case 'd': div= n1/n2;
+               JOptionPane.showMessageDialog(null, "la division es: "+div);
+           break;
+           case 'R':
+           case 'r': resta= n1-n2;
+               JOptionPane.showMessageDialog(null, "la resta es: "+resta);
+           break;
+           case 'S':
+           case 's': suma = n1+n2;
+           JOptionPane.showMessageDialog(null, "la suma es: "+suma);
+           break;
+       }
+    }
+}
+-------------------------------------------------------------
+//Banco
+
+import javax.swing.*;
+
+public class Main {
+    public static void main(String[] args) {
+
+        int n1, operacion, saldo=1000;
+        operacion = Integer.parseInt(JOptionPane.showInputDialog(null, "1.Sacar dinero\n" + "2.Ingresar dinero\n" + "3. consultar saldo\n" + "4.Cerrar"));
+        while(operacion!=4) {
+            switch (operacion) {
+                case 1:
+                    n1 = Integer.parseInt(JOptionPane.showInputDialog(null, "Cuanto dinero quieres ingresar: "));
+                    saldo = saldo + n1;
+                    operacion = Integer.parseInt(JOptionPane.showInputDialog(null, "1.Sacar dinero\n" + "2.Ingresar dinero\n" + "3. consultar saldo\n" + "4.Cerrar"));
+
+                    break;
+                case 2:
+                    n1 = Integer.parseInt(JOptionPane.showInputDialog(null, "Cuanto dinero quieres sacar: "));
+                    saldo = saldo - n1;
+                    operacion = Integer.parseInt(JOptionPane.showInputDialog(null, "1.Sacar dinero\n" + "2.Ingresar dinero\n" + "3. consultar saldo\n" + "4.Cerrar"));
+
+                    break;
+                case 3:
+                    JOptionPane.showMessageDialog(null, "El saldo de tu cuenta: " + saldo);
+                    operacion = Integer.parseInt(JOptionPane.showInputDialog(null, "1.Sacar dinero\n" + "2.Ingresar dinero\n" + "3. consultar saldo\n" + "4.Cerrar"));
+
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null,  "prueba otro numero");
+                    operacion = Integer.parseInt(JOptionPane.showInputDialog(null, "1.Sacar dinero\n" + "2.Ingresar dinero\n" + "3. consultar saldo\n" + "4.Cerrar"));
+                    break;
+            }
+        }
+    }
+}

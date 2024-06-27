@@ -1,0 +1,45 @@
+import javax.swing.*;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+int num, arr;
+int i = 0;
+        Scanner entrada = new Scanner(System.in);
+        num = entrada.nextInt();
+        int[] numeros= new int[num];
+        while(i<num){
+            numeros[i]= entrada.nextInt();
+            i++;
+        }
+        for(int u: numeros) {
+            System.out.println(u);
+        }
+    }
+}
+------------------------------------------
+//Búsqueda en arreglo
+import javax.swing.*;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+        int i = 0;
+        int num[] = {1, 2, 3, 4, 5};
+        int dato = 5;
+        boolean dat = false;
+        while (i < 5 && dat == false) {
+            if (num[i] == dato) {
+                dat = true;
+            }
+            i++;
+        }
+        if (dat == true) {
+            System.out.println("el numero se ha encontrado");
+        }else{
+            System.out.println("el numero no se ha encontrado");
+        }
+    }
+}
+
