@@ -1,0 +1,7 @@
+//Excepciones
+
+- getMessage( ) Se usa para obtener un mensaje de error asociado con una excepción.
+- printStackTrace(PrintStream s ) Se utiliza para imprimir el registro del stack2 donde se ha
+iniciado la excepción. Para recoger la info también se puede usar getStackTrace ().
+- toString( ) Se utiliza para mostrar el nombre de una excepción junto con el mensaje que devuelve
+getMessage().
