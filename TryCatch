@@ -1,0 +1,31 @@
+public class Main {
+    public static void main(String[] args) {
+        try {
+            int resultado = dividir(10, 0);
+            System.out.println("Resultado: " + resultado);
+        } catch (ArithmeticException e) {
+            System.out.println("Excepción capturada: " + e.getMessage());
+        }
+    }
+
+    public static int dividir(int a, int b) {
+        if (b == 0) {
+            throw new ArithmeticException("No se puede dividir por cero.");
+        }
+        return a / b;
+    }
+}
+
+//Bloque try y catch:
+
+En el método main, se llama al método dividir dentro de un bloque try.
+Si se lanza una excepción ArithmeticException, se captura en el bloque catch, y se imprime un mensaje indicando que se ha capturado la excepción.
+Detalles Adicionales
+throw: Se utiliza para lanzar una excepción de manera explícita. En este caso, se lanza una ArithmeticException cuando se intenta dividir por cero.
+try: Bloque que contiene el código que puede lanzar una excepción.
+catch: Bloque que maneja la excepción lanzada en el bloque try. Se pueden tener múltiples bloques catch para manejar diferentes tipos de excepciones.
+getMessage(): Método de la clase Throwable que devuelve el mensaje asociado con la excepción.
+Beneficios del Manejo de Excepciones
+Robustez: El manejo adecuado de excepciones hace que el programa sea más robusto y menos propenso a fallar inesperadamente.
+Separación de Lógica: Permite separar la lógica de manejo de errores del flujo principal del programa, haciendo el código más limpio y fácil de mantener.
+Información Útil: Proporciona información útil sobre lo que salió mal, facilitando la depuración y solución de problemas.
