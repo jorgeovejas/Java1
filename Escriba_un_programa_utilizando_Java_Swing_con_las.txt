@@ -1,0 +1,147 @@
+Vamos a crear un programa Java Swing que cumpla con las especificaciones del ejercicio presentado en la imagen. Implementaremos una ventana gráfica con un panel configurado con `BorderLayout` que contiene dos botones: "Salir" y "Cambiar color". Al pulsar estos botones, se ejecutarán las acciones correspondientes.
+
+Aquí está el código:
+
+```java
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class GestionDeEventos extends JFrame {
+    private JPanel panel;
+
+    public GestionDeEventos() {
+        // Configurar la ventana
+        setTitle("Botones y acciones");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(400, 200);
+        setLocationRelativeTo(null);
+
+        // Crear el panel y configurar el layout
+        panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+
+        // Crear los botones
+        JButton btnSalir = new JButton("Salir");
+        JButton btnCambiarColor = new JButton("Cambiar color");
+
+        // Añadir los botones al panel
+        panel.add(btnCambiarColor, BorderLayout.WEST);
+        panel.add(btnSalir, BorderLayout.SOUTH);
+
+        // Añadir el panel a la ventana
+        add(panel);
+
+        // Añadir acción al botón "Salir"
+        btnSalir.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+
+        // Añadir acción al botón "Cambiar color"
+        btnCambiarColor.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panel.setBackground(new Color((int)(Math.random() * 0x1000000)));
+            }
+        });
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new GestionDeEventos().setVisible(true);
+            }
+        });
+    }
+}
+```
+
+### Descripción del código:
+
+1. **Importaciones**:
+   ```java
+   import javax.swing.*;
+   import java.awt.*;
+   import java.awt.event.ActionEvent;
+   import java.awt.event.ActionListener;
+   ```
+   Importamos las bibliotecas necesarias para la interfaz gráfica y la gestión de eventos.
+
+2. **Clase `GestionDeEventos`**:
+   ```java
+   public class GestionDeEventos extends JFrame {
+       private JPanel panel;
+   ```
+   Extendemos `JFrame` para crear la ventana principal y declaramos un `JPanel` como un miembro de la clase.
+
+3. **Constructor `GestionDeEventos`**:
+   ```java
+   public GestionDeEventos() {
+       // Configurar la ventana
+       setTitle("Botones y acciones");
+       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       setSize(400, 200);
+       setLocationRelativeTo(null);
+   ```
+   Configuramos las propiedades de la ventana (título, operación de cierre, tamaño, y posición).
+
+4. **Configuración del `JPanel` y los botones**:
+   ```java
+   // Crear el panel y configurar el layout
+   panel = new JPanel();
+   panel.setLayout(new BorderLayout());
+
+   // Crear los botones
+   JButton btnSalir = new JButton("Salir");
+   JButton btnCambiarColor = new JButton("Cambiar color");
+
+   // Añadir los botones al panel
+   panel.add(btnCambiarColor, BorderLayout.WEST);
+   panel.add(btnSalir, BorderLayout.SOUTH);
+
+   // Añadir el panel a la ventana
+   add(panel);
+   ```
+   Creamos un `JPanel` con `BorderLayout` y añadimos dos botones en las posiciones especificadas.
+
+5. **Añadir acciones a los botones**:
+   ```java
+   // Añadir acción al botón "Salir"
+   btnSalir.addActionListener(new ActionListener() {
+       @Override
+       public void actionPerformed(ActionEvent e) {
+           System.exit(0);
+       }
+   });
+
+   // Añadir acción al botón "Cambiar color"
+   btnCambiarColor.addActionListener(new ActionListener() {
+       @Override
+       public void actionPerformed(ActionEvent e) {
+           panel.setBackground(new Color((int)(Math.random() * 0x1000000)));
+       }
+   });
+   ```
+   Definimos las acciones a realizar cuando se presionen los botones. `btnSalir` cerrará la aplicación y `btnCambiarColor` cambiará el color de fondo del panel a un color aleatorio.
+
+6. **Método `main`**:
+   ```java
+   public static void main(String[] args) {
+       SwingUtilities.invokeLater(new Runnable() {
+           @Override
+           public void run() {
+               new GestionDeEventos().setVisible(true);
+           }
+       });
+   }
+   ```
+   El método `main` inicializa la ventana en el hilo de despacho de eventos de Swing.
+
+### Ejecución del Programa
+
+Este código creará una ventana con los botones y el comportamiento especificado. Al pulsar el botón "Salir", la aplicación se cerrará. Al pulsar el botón "Cambiar color", el color de fondo del panel cambiará aleatoriamente.

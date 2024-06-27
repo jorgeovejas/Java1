@@ -1,0 +1,128 @@
+Vamos a implementar el patrón Decorator para un personaje de juego que puede equiparse con varios ítems como espada, armadura y escudo.
+
+### 1. Crear el Componente Base
+
+Definimos la interfaz `Character` con el método `equip()`.
+
+```java
+public interface Character {
+    void equip();
+}
+```
+
+### 2. Implementar el Componente Concreto
+
+Creamos la clase `BasicCharacter` que implementa `Character` y representa un personaje con equipación básica.
+
+```java
+public class BasicCharacter implements Character {
+    @Override
+    public void equip() {
+        System.out.print("Equipación básica");
+    }
+}
+```
+
+### 3. Crear el Decorador Base
+
+Diseñamos una clase abstracta `CharacterDecorator` que implementa `Character` y contiene una referencia a un objeto `Character`.
+
+```java
+public abstract class CharacterDecorator implements Character {
+    protected Character decoratedCharacter;
+
+    public CharacterDecorator(Character decoratedCharacter) {
+        this.decoratedCharacter = decoratedCharacter;
+    }
+
+    @Override
+    public void equip() {
+        decoratedCharacter.equip();
+    }
+}
+```
+
+### 4. Implementar Decoradores Concretos
+
+Desarrollamos clases decoradoras concretas para espada, armadura y escudo que extienden `CharacterDecorator`.
+
+```java
+public class SwordDecorator extends CharacterDecorator {
+    public SwordDecorator(Character decoratedCharacter) {
+        super(decoratedCharacter);
+    }
+
+    @Override
+    public void equip() {
+        decoratedCharacter.equip();
+        System.out.print(", Espada");
+    }
+}
+
+public class ArmorDecorator extends CharacterDecorator {
+    public ArmorDecorator(Character decoratedCharacter) {
+        super(decoratedCharacter);
+    }
+
+    @Override
+    public void equip() {
+        decoratedCharacter.equip();
+        System.out.print(", Armadura");
+    }
+}
+
+public class ShieldDecorator extends CharacterDecorator {
+    public ShieldDecorator(Character decoratedCharacter) {
+        super(decoratedCharacter);
+    }
+
+    @Override
+    public void equip() {
+        decoratedCharacter.equip();
+        System.out.print(", Escudo");
+    }
+}
+```
+
+### 5. Demostración
+
+En la clase principal, creamos una instancia de `BasicCharacter` y la decoramos sucesivamente con los decoradores creados, imprimiendo la descripción final del personaje después de cada decoración.
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        Character basicCharacter = new BasicCharacter();
+        System.out.print("Personaje inicial: ");
+        basicCharacter.equip();
+        System.out.println();
+
+        Character swordCharacter = new SwordDecorator(basicCharacter);
+        System.out.print("Después de añadir la espada: ");
+        swordCharacter.equip();
+        System.out.println();
+
+        Character armorSwordCharacter = new ArmorDecorator(swordCharacter);
+        System.out.print("Después de añadir la armadura: ");
+        armorSwordCharacter.equip();
+        System.out.println();
+
+        Character fullyEquippedCharacter = new ShieldDecorator(armorSwordCharacter);
+        System.out.print("Después de añadir el escudo: ");
+        fullyEquippedCharacter.equip();
+        System.out.println();
+    }
+}
+```
+
+### Resultado esperado
+
+Al ejecutar el programa, deberías obtener la siguiente salida:
+
+```
+Personaje inicial: Equipación básica
+Después de añadir la espada: Equipación básica, Espada
+Después de añadir la armadura: Equipación básica, Espada, Armadura
+Después de añadir el escudo: Equipación básica, Espada, Armadura, Escudo
+```
+
+Con esto, hemos implementado el patrón de diseño Decorator para simular la equipación de un personaje de juego con varios ítems de inventario.

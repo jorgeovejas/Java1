@@ -1,0 +1,98 @@
+Vamos a abordar cada uno de los problemas presentados en la imagen y crear los programas requeridos utilizando Java Swing.
+
+### 1. Programa con herencia para crear una ventana gráfica
+
+El primer programa debe mostrar una ventana gráfica con un título, una etiqueta, un campo de texto y un botón sin acciones asociadas, utilizando herencia.
+
+```java
+import javax.swing.*;
+
+class VentanaBase extends JFrame {
+    public VentanaBase(String titulo) {
+        super(titulo);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(300, 150);
+        setLocationRelativeTo(null);
+        inicializarComponentes();
+    }
+
+    protected void inicializarComponentes() {
+        // Este método será sobrescrito en la clase derivada
+    }
+}
+
+public class EntradaDeDatos extends VentanaBase {
+    public EntradaDeDatos() {
+        super("Entrada de datos");
+    }
+
+    @Override
+    protected void inicializarComponentes() {
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        
+        JLabel etiqueta = new JLabel("Mensaje");
+        JTextField campoTexto = new JTextField(20);
+        JButton botonAceptar = new JButton("Aceptar");
+
+        panel.add(etiqueta);
+        panel.add(campoTexto);
+        panel.add(botonAceptar);
+
+        add(panel);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            EntradaDeDatos ventana = new EntradaDeDatos();
+            ventana.setVisible(true);
+        });
+    }
+}
+```
+
+### 2. Programa con BoxLayout
+
+El segundo programa debe utilizar `BoxLayout` para organizar los componentes: una etiqueta, un campo de texto y un botón con un espacio adicional.
+
+```java
+import javax.swing.*;
+
+public class FormularioSimple {
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            JFrame frame = new JFrame("Formulario Simple");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setSize(300, 150);
+            frame.setLocationRelativeTo(null);
+
+            JPanel panel = new JPanel();
+            panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+            
+            JLabel etiqueta = new JLabel("Indícame tu nombre:");
+            JTextField campoTexto = new JTextField(20);
+            JButton botonEnviar = new JButton("Enviar");
+
+            panel.add(etiqueta);
+            panel.add(campoTexto);
+            panel.add(Box.createVerticalStrut(10)); // Espacio entre el campo de texto y el botón
+            panel.add(botonEnviar);
+
+            frame.add(panel);
+            frame.setVisible(true);
+        });
+    }
+}
+```
+
+### Descripción de los Programas
+
+1. **EntradaDeDatos**:
+   - Esta clase extiende `JFrame` y representa la ventana gráfica. Utiliza el método `inicializarComponentes` para agregar los componentes.
+   - El método `inicializarComponentes` se sobrescribe en la clase `EntradaDeDatos` para agregar una etiqueta, un campo de texto y un botón a un `JPanel` con `BoxLayout`.
+
+2. **FormularioSimple**:
+   - Este programa crea un `JFrame` directamente en el método `main` y usa `BoxLayout` para organizar los componentes verticalmente.
+   - Añade una etiqueta, un campo de texto, un espacio vertical (`Box.createVerticalStrut(10)`) y un botón al panel.
+
+Ambos programas son ejemplos básicos de cómo crear interfaces gráficas simples con Java Swing, utilizando diferentes enfoques para la organización de componentes.
